@@ -1,10 +1,13 @@
-import { ArrayMinSize, IsArray, IsNotEmpty, IsNumber, IsPositive, MaxLength, ValidateNested } from "class-validator";
+import { ArrayMinSize, IsArray, IsNotEmpty, IsNumber, IsPositive, IsUUID, MaxLength, ValidateNested } from "class-validator";
 import { CaracteristicasProdutoDTO } from "./CaracteristicasProduto.dto";
 import { ImagemProdutoDTO } from "./ImagemProduto.dto";
 import { Type } from "class-transformer";
 
 
 export class CriaProdutoDTO {
+
+    @IsUUID(undefined, {message:'Id de usuário inexistente'})
+    usuarioId : string;
 
     @IsNotEmpty({message:'O nome do produto não pode ser vazio'})
     nome: string;
